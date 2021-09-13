@@ -56,7 +56,7 @@ def compute_point_cloud_bbox(point_cloud: NDArray[np.float64], verbose: bool = F
 
 
 def find_all_polygon_bboxes_overlapping_query_bbox(
-    polygon_bboxes: NDArray[np.float64], query_bbox: NDArray[np.float64]
+    polygon_bboxes: NDArray[NDArray[np.float64]], query_bbox: NDArray[np.float64]
 ) -> Any:
     """Find all the overlapping polygon bounding boxes.
 

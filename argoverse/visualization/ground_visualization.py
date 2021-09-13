@@ -4,7 +4,7 @@
 import copy
 import os
 from pathlib import Path
-from typing import Optional, Union
+from typing import Any, Optional, Union
 
 import cv2
 import imageio
@@ -42,7 +42,7 @@ def draw_ground_pts_in_image(
     plot_ground: bool = True,
     motion_compensate: bool = False,
     camera: Optional[str] = None,
-) -> Union[None, NDArray[np.float64]]:
+) -> Any:
     """Write an image to disk with rendered ground points for every camera.
 
     Args:

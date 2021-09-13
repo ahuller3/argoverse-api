@@ -78,7 +78,7 @@ def get_pc_inside_bbox(pc_raw: NDArray[np.float64], bbox: NDArray[np.float64]) -
     return pc_raw[flag[0, :]]
 
 
-def label_to_bbox(label: _LabelType) -> Tuple[NDArray[np.float64], float]:
+def label_to_bbox(label: _LabelType) -> Tuple[List[NDArray[np.float64]], float]:
     """Convert a label into a parameterized bounding box that lives in the ego-vehicle
         coordinate frame.
 

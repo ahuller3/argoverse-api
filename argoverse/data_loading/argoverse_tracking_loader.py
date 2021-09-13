@@ -3,7 +3,7 @@
 import glob
 import logging
 import os
-from typing import Dict, Iterator, List, Optional, Union, cast
+from typing import Any, Dict, Iterator, List, Optional, Union, cast
 
 import numpy as np
 from numpy.typing import NDArray
@@ -402,7 +402,7 @@ Total bounding box: {sum(num_annotations)}
 
         return self._image_list[log_id][camera]
 
-    def get_image_list_sync(self, camera: str, log_id: Optional[str] = None, load: bool = False) -> List[str]:
+    def get_image_list_sync(self, camera: str, log_id: Optional[str] = None, load: bool = False) -> List[Any]:
         """Get list of image/or image path in lidar index
 
         Args:
@@ -430,7 +430,7 @@ Total bounding box: {sum(num_annotations)}
         camera: str,
         log_id: Optional[str] = None,
         load: bool = True,
-    ) -> Optional[Union[str, NDArray[np.float64]]]:
+    ) -> Any:
         """get image or image path at a specific timestamp
 
         Args:
@@ -458,9 +458,7 @@ Total bounding box: {sum(num_annotations)}
             return load_image(image_path)
         return image_path
 
-    def get_image(
-        self, idx: int, camera: str, log_id: Optional[str] = None, load: bool = True
-    ) -> Union[str, NDArray[np.float64]]:
+    def get_image(self, idx: int, camera: str, log_id: Optional[str] = None, load: bool = True) -> Any:
         """get image or image path at a specific index (in image index)
 
         Args:
@@ -487,9 +485,7 @@ Total bounding box: {sum(num_annotations)}
             return load_image(image_path)
         return image_path
 
-    def get_image_sync(
-        self, idx: int, camera: str, log_id: Optional[str] = None, load: bool = True
-    ) -> Union[str, NDArray[np.float64]]:
+    def get_image_sync(self, idx: int, camera: str, log_id: Optional[str] = None, load: bool = True) -> Any:
         """get image or image path at a specific index (in lidar index)
 
         Args:
@@ -516,7 +512,7 @@ Total bounding box: {sum(num_annotations)}
             return load_image(image_path)
         return image_path
 
-    def get_lidar(self, idx: int, log_id: Optional[str] = None, load: bool = True) -> Union[str, NDArray[np.float64]]:
+    def get_lidar(self, idx: int, log_id: Optional[str] = None, load: bool = True) -> Any:
         """Get lidar corresponding to frame index idx (in lidar frame).
 
         Args:

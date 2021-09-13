@@ -156,7 +156,7 @@ def accumulate(job: AccumulateJob) -> Tuple[DefaultDict[str, NDArray[np.float64]
             if gts.shape[0] > 0:
                 gts = filter_objs_to_roi(gts, avm, city_SE3_egovehicle, log_city_name)
 
-    cls_to_accum = defaultdict(list)
+    cls_to_accum: DefaultDict[str, NDArray[np.float64]] = defaultdict(list)
     cls_to_ninst = defaultdict(int)
     for class_name in cfg.dt_classes:
         dt_filtered = filter_instances(
@@ -185,7 +185,7 @@ def accumulate(job: AccumulateJob) -> Tuple[DefaultDict[str, NDArray[np.float64]
     return cls_to_accum, cls_to_ninst
 
 
-def remove_duplicate_instances(instances: NDArray[np.float64], cfg: DetectionCfg) -> Any:
+def remove_duplicate_instances(instances: List[ObjectLabelRecord], cfg: DetectionCfg) -> Any:
     """Remove any duplicate cuboids in ground truth.
 
     Any ground truth cuboid of the same object class that shares the same centroid
@@ -308,7 +308,7 @@ def filter_objs_to_roi(
 
 
 def filter_instances(
-    instances: List[ObjectLabelRecord],
+    instances: NDArray[Any],
     target_class_name: str,
     filter_metric: FilterMetric,
     max_detection_range: float,

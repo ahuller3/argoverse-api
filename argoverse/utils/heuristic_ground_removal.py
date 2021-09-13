@@ -77,4 +77,4 @@ def filter_ground_pts_polar_grid_mean_var(lidar_pts: NDArray[np.float64]) -> NDA
 
     non_ground_lidar_pts += xyz_mean
 
-    return non_ground_lidar_pts
+    return np.ndarray(non_ground_lidar_pts)

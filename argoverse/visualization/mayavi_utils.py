@@ -118,7 +118,7 @@ def plot_bbox_3d_mayavi(
 def plot_points_3D_mayavi(
     points: NDArray[np.float64],
     fig: Figure,
-    per_pt_color_strengths: NDArray[np.float64] = None,
+    per_pt_color_strengths: NDArray[np.float64] = np.ndarray(None),
     fixed_color: Optional[Color] = (1, 0, 0),
     colormap: str = "spectral",
 ) -> Figure:
@@ -139,7 +139,7 @@ def plot_points_3D_mayavi(
     if len(points) == 0:
         return None
 
-    if per_pt_color_strengths is None or len(per_pt_color_strengths) != len(points):
+    if per_pt_color_strengths is np.ndarray(None) or len(per_pt_color_strengths) != len(points):
         # Height data used for shading
         per_pt_color_strengths = points[:, 2]
 
@@ -159,7 +159,7 @@ def plot_points_3D_mayavi(
 
 def plot_3d_clipped_bbox_mayavi(
     fig: Figure,
-    planes: NDArray[np.float64],
+    planes: List[NDArray[np.float64]],
     uv_cam: NDArray[np.float64],
     colors: Tuple[Color, Color, Color] = ((0, 0, 1), (1, 0, 0), (0, 1, 0)),
 ) -> Figure:
@@ -324,7 +324,7 @@ def mayavi_compare_point_clouds(point_cloud_list: Iterable[NDArray[np.float64]])
         else:
             color = cast(Color, tuple([np.random.rand() for i in range(3)]))
 
-        plot_points_3D_mayavi(fig, point_cloud, color)
+        plot_points_3D_mayavi(fig, point_cloud, np.ndarray(color))
 
     mayavi_wrapper.mlab.view(azimuth=180)  # type: ignore
     mayavi_wrapper.mlab.show()  # type: ignore

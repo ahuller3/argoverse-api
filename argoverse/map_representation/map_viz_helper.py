@@ -132,7 +132,7 @@ def render_global_city_map_bev(
 
     if plot_rasterized_roi:
         grid_2d_pts = get_mesh_grid_as_point_cloud(xmin + 1, xmax - 1, ymin + 1, ymax - 1)
-        pink = np.array([180.0, 105.0, 255.0]) / 255
+        pink: Tuple[int, int, int] = np.array([180.0, 105.0, 255.0]) / 255
         roi_2d_pts = avm.remove_non_driveable_area_points(grid_2d_pts, city_name)
         roi_2d_pts = image_to_city_se2.transform_point_cloud(roi_2d_pts)
         roi_2d_pts *= UPSAMPLE_FACTOR

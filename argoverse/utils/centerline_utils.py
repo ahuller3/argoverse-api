@@ -2,7 +2,7 @@
 
 import datetime
 import math
-from typing import Iterable, List, Sequence, Set, Tuple
+from typing import Any, Iterable, List, Sequence, Set, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -392,7 +392,7 @@ def lane_waypt_to_query_dist(
        min_dist_nn_indices: array with ranked indices of centerlines, closest first
        dense_centerlines: list of arrays, each representing (N,2) centerline
     """
-    per_lane_dists: List[float] = []
+    per_lane_dists: NDArray[np.float64] = np.empty(0)
     dense_centerlines: List[NDArray[np.float64]] = []
     for nn_idx, lane_obj in enumerate(nearby_lane_objs):
         centerline = lane_obj.centerline

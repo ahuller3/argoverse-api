@@ -88,7 +88,7 @@ def plot_frustum_planes_and_normals(
             color = (0, 1, 1)  # top is teal
 
         plane_pts = generate_grid_on_plane(a, b, c, d, P)
-        fig = plot_points_3D_mayavi(plane_pts, fig, color)
+        fig = plot_points_3D_mayavi(plane_pts, fig, np.ndarray(color))
         # plot the normals at (0,0,0.5) and normal vector (u,v,w) given by (a,b,c)
         mayavi_wrapper.mlab.quiver3d(  # type: ignore
             0,

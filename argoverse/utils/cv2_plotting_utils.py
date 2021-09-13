@@ -200,7 +200,7 @@ def get_img_contours(img: NDArray[np.float64]) -> Any:
     Returns:
         contours: Numpy array
     """
-    imgray = img.copy() * 255
+    imgray: NDArray[np.float64] = img.copy() * 255
     threshold_val = 127
     max_binary_val = 255
     ret, thresh = cv2.threshold(imgray, threshold_val, max_binary_val, 0)

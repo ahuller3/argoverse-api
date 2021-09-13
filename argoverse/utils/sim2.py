@@ -8,7 +8,7 @@ References:
 
 import json
 import os
-from typing import Union
+from typing import Any, Union
 
 import numpy as np
 from numpy.typing import NDArray
@@ -22,7 +22,7 @@ _PathLike = Union[str, "os.PathLike[str]"]
 class Sim2:
     """Implements the Similarity(2) class."""
 
-    def __init__(self, R: NDArray[np.float64], t: "Sim2", s: Union[int, float]) -> None:
+    def __init__(self, R: NDArray[np.float64], t: NDArray[np.float64], s: Union[int, float]) -> None:
         """Initialize from rotation R, translation t, and scale s.
 
         Args:
@@ -81,7 +81,7 @@ class Sim2:
         return self.R_
 
     @property
-    def translation(self) -> NDArray[np.float64]:
+    def translation(self) -> Any:
         """Return the (2,) translation vector."""
         return self.t_
 
@@ -119,7 +119,7 @@ class Sim2:
     def inverse(self) -> "Sim2":
         """Return the inverse."""
         Rt = self.R_.T
-        sRt: "Sim2" = -Rt @ (self.s_ * self.t_)
+        sRt: NDArray[np.float64] = -Rt @ (self.s_ * self.t_)
         return Sim2(Rt, sRt, 1.0 / self.s_)
 
     def transform_from(self, point_cloud: NDArray[np.float64]) -> float:

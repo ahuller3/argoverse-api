@@ -38,7 +38,7 @@ def rotmat2quat(R: NDArray[np.float64]) -> NDArray[np.float64]:
     return quat_wxyz
 
 
-def quat2rotmat(q: NDArray[np.float64]) -> Any:
+def quat2rotmat(q: NDArray[Any]) -> Any:
     """Normalizes a quaternion to unit-length, then converts it into a rotation matrix.
 
     Note that libraries such as Scipy expect a quaternion in scalar-last [x, y, z, w] format,

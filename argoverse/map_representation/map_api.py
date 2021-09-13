@@ -353,7 +353,7 @@ class ArgoverseMap:
         is_da_boolean_arr = self.get_raster_layer_points_boolean(point_cloud, city_name, "driveable_area")
         return point_cloud[is_da_boolean_arr]
 
-    def remove_non_roi_points(self, point_cloud: NDArray[np.float64], city_name: str) -> NDArray[np.float64]:
+    def remove_non_roi_points(self, point_cloud: NDArray[np.float64], city_name: str) -> Any:
         """
         Remove any points that does't fall within the region of interest (ROI)
 
@@ -1079,7 +1079,7 @@ class ArgoverseMap:
         xmin, xmax, ymin, ymax = query_bbox
         local_lane_polygons, _ = find_local_polygons(
             copy.deepcopy(lane_polygons),
-            copy.deepcopy(lane_bboxes),
+            copy.deepcopy(np.ndarray(lane_bboxes)),
             xmin,
             xmax,
             ymin,
@@ -1106,7 +1106,7 @@ class ArgoverseMap:
         xmin, xmax, ymin, ymax = query_bbox
         local_das, _ = find_local_polygons(
             copy.deepcopy(driveable_areas),
-            copy.deepcopy(da_bboxes),
+            copy.deepcopy(np.ndarray(da_bboxes)),
             xmin,
             xmax,
             ymin,
